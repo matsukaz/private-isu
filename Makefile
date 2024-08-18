@@ -13,6 +13,11 @@ benchmarker/userdata/img: benchmarker/userdata/img.zip
 	cd benchmarker/userdata && \
 	unzip -qq -o img.zip
 
+prepare_local_tools:
+	brew install percona-toolkit
+	go install github.com/air-verse/air@latest
+	go install github.com/matsuu/kataribe@latest
+
 run_benchmarker:
 	cd benchmarker; \
 	./bin/benchmarker -t "http://localhost" -u ./userdata
