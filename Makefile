@@ -17,3 +17,13 @@ run_benchmarker:
 	cd benchmarker; \
 	./bin/benchmarker -t "http://localhost" -u ./userdata
 
+run_local:
+	$(eval ISUCONP_DB_HOST := localhost)
+	$(eval ISUCONP_DB_PORT := 3306)
+	$(eval ISUCONP_DB_USER := root)
+	$(eval ISUCONP_DB_PASSWORD := root)
+	$(eval ISUCONP_DB_NAME := isuconp)
+	$(eval ISUCONP_MEMCACHED_ADDRESS := localhost:11211)
+	cd webapp/golang; \
+	ISUCONP_DB_HOST=$(ISUCONP_DB_HOST) ISUCONP_DB_PORT=$(ISUCONP_DB_PORT) ISUCONP_DB_USER=$(ISUCONP_DB_USER) ISUCONP_DB_PASSWORD=$(ISUCONP_DB_PASSWORD) ISUCONP_DB_NAME=$(ISUCONP_DB_NAME) ISUCONP_MEMCACHED_ADDRESS=$(ISUCONP_MEMCACHED_ADDRESS) go run app.go
+
