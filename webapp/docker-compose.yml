@@ -60,6 +60,8 @@ services:
     image: memcached:1.6
     networks:
       - my_network
+    ports:
+      - "11211:11211"
 
 volumes:
   mysql:
