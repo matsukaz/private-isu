@@ -22,7 +22,7 @@ run_benchmarker:
 	cd benchmarker; \
 	./bin/benchmarker -t "http://localhost" -u ./userdata
 
-run_local:
+run_local_app:
 	$(eval ISUCONP_DB_HOST := localhost)
 	$(eval ISUCONP_DB_PORT := 3306)
 	$(eval ISUCONP_DB_USER := root)
