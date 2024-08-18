@@ -12,3 +12,8 @@ benchmarker/userdata/img.zip:
 benchmarker/userdata/img: benchmarker/userdata/img.zip
 	cd benchmarker/userdata && \
 	unzip -qq -o img.zip
+
+run_benchmarker:
+	cd benchmarker; \
+	./bin/benchmarker -t "http://localhost" -u ./userdata
+
