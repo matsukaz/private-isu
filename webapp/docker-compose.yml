@@ -9,33 +9,36 @@ services:
       - "80:80"
     networks:
       - my_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
-  app:
-    build:
-      # Go実装の場合は golang/ PHP実装の場合は php/
-      # context: ruby/
-      context: golang/
-      dockerfile: Dockerfile
-    depends_on:
-      - mysql
-      - memcached
-    environment:
-      ISUCONP_DB_HOST: mysql
-      ISUCONP_DB_PORT: 3306
-      ISUCONP_DB_USER: root
-      ISUCONP_DB_PASSWORD: root
-      ISUCONP_DB_NAME: isuconp
-      ISUCONP_MEMCACHED_ADDRESS: memcached:11211
-    networks:
-      - my_network
-    volumes:
-      - ./public:/home/public
-    init: true
-    deploy:
-      resources:
-        limits:
-          cpus: "1"
-          memory: 1g
+  #  app:
+  #    build:
+  #      # Go実装の場合は golang/ PHP実装の場合は php/
+  #      # context: ruby/
+  #      context: golang/
+  #      dockerfile: Dockerfile
+  #    depends_on:
+  #      - mysql
+  #      - memcached
+  #    environment:
+  #      ISUCONP_DB_HOST: mysql
+  #      ISUCONP_DB_PORT: 3306
+  #      ISUCONP_DB_USER: root
+  #      ISUCONP_DB_PASSWORD: root
+  #      ISUCONP_DB_NAME: isuconp
+  #      ISUCONP_MEMCACHED_ADDRESS: memcached:11211
+  #    networks:
+  #      - my_network
+  #    volumes:
+  #      - ./golang:/home/webapp
+  #      - ./public:/home/public
+  #    init: true
+  #    deploy:
+  #      resources:
+  #        limits:
+  #          cpus: "1"
+  #          memory: 1g
 
   mysql:
     image: mysql:8.4
