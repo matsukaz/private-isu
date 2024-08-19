@@ -32,3 +32,14 @@ run_local_app:
 	cd webapp/golang; \
 	ISUCONP_DB_HOST=$(ISUCONP_DB_HOST) ISUCONP_DB_PORT=$(ISUCONP_DB_PORT) ISUCONP_DB_USER=$(ISUCONP_DB_USER) ISUCONP_DB_PASSWORD=$(ISUCONP_DB_PASSWORD) ISUCONP_DB_NAME=$(ISUCONP_DB_NAME) ISUCONP_MEMCACHED_ADDRESS=$(ISUCONP_MEMCACHED_ADDRESS) air
 
+docker_up:
+	cd webapp; \
+	docker compose up -d
+
+docker_down:
+	cd webapp; \
+	docker compose down
+
+docker_app_rebuild:
+	cd webapp; \
+	docker compose up -d --no-deps --build app

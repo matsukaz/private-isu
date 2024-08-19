@@ -31,7 +31,6 @@ services:
   #    networks:
   #      - my_network
   #    volumes:
-  #      - ./golang:/home/webapp
   #      - ./public:/home/public
   #    init: true
   #    deploy:
