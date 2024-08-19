@@ -9,8 +9,8 @@ services:
       - "80:80"
     networks:
       - my_network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+  #    extra_hosts:
+  #      - "host.lima.internal:host-gateway"
 
   #  app:
   #    build:
