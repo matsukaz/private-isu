@@ -40,6 +40,27 @@ docker_down:
 	cd webapp; \
 	docker compose down
 
-docker_app_rebuild:
+docker_rebuild_app:
 	cd webapp; \
 	docker compose up -d --no-deps --build app
+
+set_slow_query_on:
+	rm -f profiles/mysql/mysql-slow.log; \
+	scripts/profile/slow_query.sh on
+
+set_slow_query_off:
+	scripts/profile/slow_query.sh off
+
+set_kataribe_on:
+	scripts/profile/kataribe.sh on; \
+	rm -f logs/nginx/*.log; \
+	cd webapp; \
+	docker compose restart nginx
+
+set_kataribe_off:
+	scripts/profile/kataribe.sh off; \
+	cd webapp; \
+	docker compose restart nginx
+
+profile_kataribe:
+	scripts/profile_kataribe.sh
