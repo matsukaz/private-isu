@@ -45,7 +45,7 @@ docker_rebuild_app:
 	docker compose up -d --no-deps --build app
 
 set_slow_query_on:
-	rm -f profiles/mysql/mysql-slow.log; \
+	rm -f logs/mysql/*.log; \
 	scripts/profile/slow_query.sh on
 
 set_slow_query_off:
@@ -64,3 +64,6 @@ set_kataribe_off:
 
 profile_kataribe:
 	scripts/profile_kataribe.sh
+
+profile_slow_query:
+	scripts/profile_pt-query-digest.sh
