@@ -40,6 +40,10 @@ docker_down:
 	cd webapp; \
 	docker compose down
 
+docker_logs:
+	cd webapp; \
+	docker compose logs -f
+
 docker_rebuild_app:
 	cd webapp; \
 	docker compose up -d --no-deps --build app
