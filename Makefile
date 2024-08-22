@@ -66,8 +66,17 @@ set_kataribe_off:
 	cd webapp; \
 	docker compose restart nginx
 
+set_pprof_on:
+	scripts/profile/pprof.sh on
+
+set_pprof_off:
+	scripts/profile/pprof.sh off
+
 profile_kataribe:
 	scripts/profile_kataribe.sh
 
 profile_slow_query:
 	scripts/profile_pt-query-digest.sh
+
+profile_pprof:
+	go tool pprof -seconds 60 -http=localhost:1080 http://localhost:6060/debug/pprof/profile
